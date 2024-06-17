@@ -25,9 +25,18 @@
     // 🧠 The person also has an `ageGracefully` method, which increases `age` by 1 each time it's called.
     // 🧠 But there's a catch: once `age` reaches 12, the `ageGracefully` method will have no effect.
     class PeterPan {
-
+      constructor(name, age) {
+        this.name = name;
+        this.age = 0;
+      }
+      ageGracefully() {
+        if (this.age < 12) {
+          this.age++;
+        }
+      }
     }
-
+    const newperson = new PeterPan("Joe", 13);
+    console.log(newperson.ageGracefully());
     // 👉 CHALLENGE 2
     // 🧠 Build an AirPlane class. This class allows to instantiate airplanes.
     // 🧠 When instantiating a new plane using this class, we provide a string with the model of the plane.
@@ -38,6 +47,22 @@
     // 🧠 Calling `down` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 If calling `down` would cause the plane to go below altitude zero, `altitude` is set to 0 and the string "CRASH!" is returned.
     class AirPlane {
+      constructor(model, altitude) {
+        this.model = model;
+        this.altitude = 0;
+      }
+      up(meters) {
+        this.altitude += meters
+        return this.altitude
+      }
+      down(meters) {
+        if (this.altitude >= meters) {
+          this.altitude -= meters;
+          return this.altitude
+        }
+        this.altitude = 0
+        return "CRASH!"
+      }
 
     }
 
@@ -48,6 +73,22 @@
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
+      isOn = false;
+      turnOn(on) {
+        this.isOn = true
+        return "You turned the bulb ON"
+      }
+      turnOff(off) {
+        this.isOn = false
+        return "You turned the bulb OFF"
+      }
+      toggle(tog) {
+        this.isOn = !this.isOn
+        if (this.isOn === true) {
+          return "You turned the bulb ON"
+        }
+        return "You turned the bulb OFF"
+      }
 
     }
 
@@ -66,8 +107,21 @@
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
+        constructor(number) {
+          this.argnumber = number;
+        }
+        count() {
+          if (this.argnumber > 0) {
+            return `${this.argnumber--}!`
+          } else if (this.argnumber === 0) {
+            this.argnumber--
+            return "Liftoff!"
+          } else {
+            return null
+          }
+        }
 
-    }
+      }
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
